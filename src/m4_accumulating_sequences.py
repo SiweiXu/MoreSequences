@@ -190,7 +190,7 @@ def make_less_simple_string(m, n):
       :type m: int
       :type n: int
     """
-    
+
     # ------------------------------------------------------------------
     # TODO: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
