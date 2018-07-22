@@ -239,15 +239,19 @@ def index_of_first_negative(numbers):
       :type numbers: list | tuple of float | int
       :rtype: int
     """
-    count = 0
+    j = 0
+    for j in range(len(numbers) + 1):
+        if j >= len(numbers):
+            return -1
+        if numbers[j] < 0:
+            break
 
     for k in range(len(numbers)):
         if numbers[k] < 0:
-            count += 1
             return k
 
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
