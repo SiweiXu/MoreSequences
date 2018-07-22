@@ -522,12 +522,12 @@ def run_test_fancy_polygon():
     # ------------------------------------------------------------------
 
     # Test 3 (on another window):
-    title = 'FANCY POLYGON test 4:  20 lime green lines on blue circle, hops = 7.'
+    title = 'FANCY POLYGON test 4:  61 light pink lines on a light blue circle, hops = 5.'
     window = rg.RoseWindow(500, 500, title)
 
-    circle = rg.Circle(rg.Point(240, 165), 150)
-    circle.fill_color = 'blue'
-    fancy_polygon(window, circle, 20, 7, 'lime green', 5)
+    circle = rg.Circle(rg.Point(250, 250), 150)
+    circle.fill_color = 'light blue'
+    fancy_polygon(window, circle, 300, 61, 'light pink', 5)
     window.close_on_mouse_click()
 
 
@@ -591,9 +591,11 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color, th
     list_of_points = generate_points_on_circle(circle, number_of_lines)
     circle.attach_to(window)
 
-    for k in range(len(list_of_points) - hops_to_next_point):
+    for k in range(len(list_of_points)):
 
-        line = rg.Line(list_of_points[k], list_of_points[k + hops_to_next_point])
+        line = rg.Line(list_of_points[k], list_of_points[(k + hops_to_next_point) % number_of_lines])
+        line.color = color
+        line.thickness = thickness
         line.attach_to(window)
 
     window.render()
