@@ -7,8 +7,8 @@ for ITERATING through SEQUENCES, including:
   -- The FIND pattern (via LINEAR SEARCH)
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Siwei Xu.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -75,8 +75,15 @@ def sum_radii(circles):
       :type circles:  list | tuple of rg.Circle
       :rtype: int | float
     """
+    total = 0
+
+    for k in range(len(circles)):
+        r = circles[k].radius
+        total += r
+
+    return total
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # Note: No fair using "slices" on ANY of these problems,
@@ -150,8 +157,15 @@ def count_last_n_odds(integers, n):
       :type n: int
       :rtype: int
     """
+    count = 0
+
+    for k in range(len(integers) - n, len(integers)):
+        if integers[k] % 2 == 1:
+            count += 1
+
+    return count
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
@@ -225,6 +239,13 @@ def index_of_first_negative(numbers):
       :type numbers: list | tuple of float | int
       :rtype: int
     """
+    count = 0
+
+    for k in range(len(numbers)):
+        if numbers[k] < 0:
+            count += 1
+            return k
+
     # ------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #     The testing code is already written for you (above).
