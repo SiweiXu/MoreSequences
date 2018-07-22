@@ -18,12 +18,12 @@ def main():
     run_test_make_less_simple_string()
 
     # ------------------------------------------------------------------
-    # TODO: 8. Uncomment the tests below before working TO DO 9.
+    # DONE: 8. Uncomment the tests below before working TO DO 9.
     #   They launch annoying rg.RoseWindows on each run that you don't want
     #   until you get to TO DO 9 and 10.
     # ------------------------------------------------------------------
-    # run_test_draw_shapes()
-    # run_test_rectangles_from_circles()
+    run_test_draw_shapes()
+    run_test_rectangles_from_circles()
 
 
 def run_test_make_simple_list():
@@ -167,6 +167,24 @@ def run_test_make_less_simple_string():
     print('Testing the   make_less_simple_string   function:')
     print('--------------------------------------------------')
 
+    # Test 1:
+    expected = '2-3-4-5-6-7'
+    actual = make_less_simple_string(2, 7)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
+    # Test 2:
+    expected = '9-10-11'
+    actual = make_less_simple_string(9, 11)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
+    # Test 3:
+    expected = '15'
+    actual = make_less_simple_string(15, 15)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
 
 def make_less_simple_string(m, n):
     """
@@ -190,9 +208,16 @@ def make_less_simple_string(m, n):
       :type m: int
       :type n: int
     """
+    string = ''
 
+    for k in range(m, n + 1):
+        string += str(k)
+        if k != n:
+            string += '-'
+
+    return string
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -----------------------------------------------------------------
 
@@ -275,7 +300,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
+    # DONE: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
     #     The testing code is already written for you (that you just enabled in TO DO 8).
     #
     ####################################################################
@@ -285,6 +310,10 @@ def draw_shapes(shapes, window):
     # FWIW: The word for ideas like this is "polymorphism".
     ####################################################################
     # ------------------------------------------------------------------
+    for k in range(len(shapes)):
+        shapes[k].attach_to(window)
+
+    window.render(0.3)
 
 
 def run_test_rectangles_from_circles():
@@ -385,8 +414,22 @@ def rectangles_from_circles(circles):
       :type circles:  list | tuple of rg.Circle
       :rtype: list of rg.Rectangles
     """
+    sequence = []
+    for k in range(len(circles)):
+        x = circles[k].center.x
+        y = circles[k].center.y
+        r = circles[k].radius
+
+        point1 = rg.Point(x - r, y - r)
+        point2 = rg.Point(x + r, y + r)
+
+        rect = rg.Rectangle(point1, point2)
+        sequence += [rect]
+
+    return sequence
+
     # ------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
