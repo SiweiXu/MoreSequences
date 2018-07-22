@@ -308,8 +308,14 @@ def contains_an_a(s):
       :type s: str
       :rtype: bool
     """
+    j = 0
+    for j in range(len(s) + 1):
+        if j >= len(s):
+            return False
+        if s[j] == 'a':
+            return True
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
